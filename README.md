@@ -20,3 +20,5 @@ O programa deve perguntar ao usuário qual funcionário ele deseja buscar por no
 Compute o tempo de execução do processo de busca.
 
 Informe a complexidade do algoritmo Busca Binária.
+
+Compilando: gcc -c funcionario.c && gcc -c main.c && gcc -o prog funcionario.o main.o && ./prog

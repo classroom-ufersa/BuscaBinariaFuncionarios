@@ -1,13 +1,11 @@
 //Implementação da interface das funções
+#include <stdio.h>
+typedef struct funcionario Funcionario;
 
-//typedef struct Funcionario {
-//    char nome[100];
-//    char cargo[100];
-//    char documento[20];
-//};
+void *resgitra_funcionario(FILE *arquivo);
 
-//Funcionario *ler_funcionarios(char *nome_arquivo, int *tamanho);
-//Funcionario *busca_binaria_por_nome(Funcionario *funcionarios, int tamanho, char *nome_alvo);
-//void liberar_memoria(Funcionario *funcionarios);
+int quant_linhas(FILE *arquivo);
 
+Funcionario *returna_vetor(FILE *arquivo);
 
+void libera_vetor(Funcionario *funcionarios);
