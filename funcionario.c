@@ -46,7 +46,7 @@ int quant_linhas(FILE *arquivo)
             nlinhas++;
         }
     }
-    return nlinhas;
+    return nlinhas/3;
 }
 
 void returna_vetor(FILE *arquivo)
@@ -72,9 +72,7 @@ void returna_vetor(FILE *arquivo)
     }
 
     for (i = 0; i < quant_funcionarios; i++) {
-        printf("%s\n", funcionarios[i].nome);
-        printf("%s\n", funcionarios[i].cargo);
-        printf("%s\n", funcionarios[i].documento);
+        printf("%s\n%s\n%s\n", funcionarios[i].nome, funcionarios[i].cargo, funcionarios[i].documento);
     }
 
     fclose(arquivo);

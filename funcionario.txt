@@ -2,5 +2,5 @@ gabriel
 professor
 123
 natyel
-aluno
+jogador
 678
