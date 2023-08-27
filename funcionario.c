@@ -49,35 +49,35 @@ int quant_linhas(FILE *arquivo)
     return nlinhas;
 }
 
-Funcionario *returna_vetor(FILE *arquivo)
+void returna_vetor(FILE *arquivo)
 {
     int quant_funcionarios = quant_linhas(arquivo), i;
-    char linha[50], nome[21], cargo[21], documento[21];
+    char nome[21], cargo[21], documento[21];
 
     Funcionario *funcionarios = (Funcionario *) malloc(quant_funcionarios * sizeof(Funcionario));
-    if(funcionarios == NULL){
+    if (funcionarios == NULL){
         printf("Erro ao alocar memória");
         exit(1);
     }
-
-    arquivo = fopen("funcionario.txt", "a");
+    
+    arquivo = fopen("funcionario.txt", "rt");
     if(arquivo == NULL){
         printf("Erro ao abrir o arquivo!\n");
         exit(1);
     }
+    for (i = 0; i < quant_funcionarios; i++) {
+        fscanf(arquivo, "%s", funcionarios[i].nome);
+        fscanf(arquivo, "%s", funcionarios[i].cargo);
+        fscanf(arquivo, "%s", funcionarios[i].documento);
+    }
 
-    for(i = 0; i < quant_funcionarios; i++){
-        fscanf(arquivo, "%s", funcionarios.nome);
-        fscanf(arquivo, "%s", funcionarios.cargo);
-        fscanf(arquivo, "%s", funcionarios.documento);
+    for (i = 0; i < quant_funcionarios; i++) {
+        printf("%s\n", funcionarios[i].nome);
+        printf("%s\n", funcionarios[i].cargo);
+        printf("%s\n", funcionarios[i].documento);
     }
 
     fclose(arquivo);
-    return funcionarios;
-}
-
-void libera_vetor(Funcionario *funcionarios)
-{
     free(funcionarios);
 }
 

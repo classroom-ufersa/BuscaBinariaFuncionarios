@@ -19,6 +19,9 @@ int main(void)
       resgitra_funcionario(arquivo); break;
       
       case 2:
+      quant_linhas(arquivo);
+      returna_vetor(arquivo);
+
     }
   }
   while(opcao1 != 3);
