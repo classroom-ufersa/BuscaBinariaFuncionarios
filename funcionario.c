@@ -11,10 +11,16 @@ struct funcionario
     char nome[21], cargo[21], documento[21];
 };
 
+<<<<<<< HEAD
 void resgitra_funcionario(Funcionario *funcionario, FILE *arquivo)
 {
     funcionario = (Funcionario *) malloc(sizeof(Funcionario));
 
+=======
+void resgitra_funcionario(FILE *arquivo)
+{
+    Funcionario funcionario;
+>>>>>>> da486ed355509616ad863e0df2187d77ccc71378
     arquivo = fopen("funcionario.txt", "a");
     if(arquivo == NULL){
         printf("Erro ao abrir o arquivo!\n");
@@ -50,11 +56,19 @@ int quantifica_funcionarios(FILE *arquivo)
     return nlinhas/3;
 }
 
+<<<<<<< HEAD
 Funcionario *carrega_dados(Funcionario *funcionarios, FILE *arquivo)
+=======
+Funcionario *retorna_funcionarios(Funcionario *funcionarios, FILE *arquivo)
+>>>>>>> da486ed355509616ad863e0df2187d77ccc71378
 {
     int nfuncionarios = quantifica_funcionarios(arquivo), i;
 
+<<<<<<< HEAD
     funcionarios = (Funcionario *) malloc(nfuncionarios * sizeof(Funcionario));
+=======
+    funcionarios = (Funcionario *) malloc(quant_funcionarios * sizeof(Funcionario));
+>>>>>>> da486ed355509616ad863e0df2187d77ccc71378
     if (funcionarios == NULL){
         printf("Erro ao alocar memória");
         exit(1);
@@ -76,9 +90,35 @@ Funcionario *carrega_dados(Funcionario *funcionarios, FILE *arquivo)
     }
 
     fclose(arquivo);
+<<<<<<< HEAD
     return funcionarios;
 }
 
+=======
+
+    return funcionarios;
+}
+
+/*int buscaBinaria(Funcionario *vetor, int tamanho) 
+{
+    int inicio = 0;
+    int fim = tamanho - 1;
+    int meio;
+    while (inicio <= fim) {
+        meio = (inicio + fim) / 2;
+        if (vetor[meio] == valor) {
+            return meio;
+        } else if (vetor[meio] < valor) {
+            inicio = meio + 1;
+        } else {
+            fim = meio - 1;
+        }
+    }
+    return -1;
+}
+*/
+
+>>>>>>> da486ed355509616ad863e0df2187d77ccc71378
 void libera_funcionarios(Funcionario *funcionarios)
 {
     free(funcionarios);
