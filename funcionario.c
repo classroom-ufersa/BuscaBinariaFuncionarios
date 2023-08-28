@@ -11,7 +11,7 @@ struct funcionario
     char nome[21], cargo[21], documento[21];
 };
 
-void *resgitra_funcionario(FILE *arquivo)
+void resgitra_funcionario(FILE *arquivo)
 {
     Funcionario funcionario;
     arquivo = fopen("funcionario.txt", "a");
@@ -48,12 +48,12 @@ int quant_linhas(FILE *arquivo)
     return nlinhas/3;
 }
 
-void returna_vetor(FILE *arquivo)
+Funcionario *retorna_funcionarios(Funcionario *funcionarios, FILE *arquivo)
 {
     int quant_funcionarios = quant_linhas(arquivo), i;
     char nome[21], cargo[21], documento[21];
 
-    Funcionario *funcionarios = (Funcionario *) malloc(quant_funcionarios * sizeof(Funcionario));
+    funcionarios = (Funcionario *) malloc(quant_funcionarios * sizeof(Funcionario));
     if (funcionarios == NULL){
         printf("Erro ao alocar memória");
         exit(1);
@@ -75,6 +75,30 @@ void returna_vetor(FILE *arquivo)
     }
 
     fclose(arquivo);
-    free(funcionarios);
+
+    return funcionarios;
 }
 
+/*int buscaBinaria(Funcionario *vetor, int tamanho) 
+{
+    int inicio = 0;
+    int fim = tamanho - 1;
+    int meio;
+    while (inicio <= fim) {
+        meio = (inicio + fim) / 2;
+        if (vetor[meio] == valor) {
+            return meio;
+        } else if (vetor[meio] < valor) {
+            inicio = meio + 1;
+        } else {
+            fim = meio - 1;
+        }
+    }
+    return -1;
+}
+*/
+
+void libera_funcionarios(Funcionario *funcionarios)
+{
+    free(funcionarios);
+}

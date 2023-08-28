@@ -4,7 +4,8 @@
 
 int main(void)
 {
-  int opcao1, opcao2;
+  int opcao1, opcao2, quant_funcionarios;
+  Funcionario *funcionarios;
   FILE *arquivo;
   do
   {
@@ -19,8 +20,10 @@ int main(void)
       resgitra_funcionario(arquivo); break;
       
       case 2:
-      quant_linhas(arquivo);
-      returna_vetor(arquivo);
+      quant_funcionarios = quant_linhas(arquivo);
+      funcionarios = returna_funcionarios(funcionarios, arquivo);
+      buscaBinaria(funcionarios, quant_funcionarios);
+      libera_funcionarios(funcionarios);
 
     }
   }
