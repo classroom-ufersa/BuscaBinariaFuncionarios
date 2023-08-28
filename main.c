@@ -5,7 +5,9 @@
 int main(void)
 {
   int opcao1, opcao2;
+  Funcionario *funcionario;
   FILE *arquivo;
+
   do
   {
     printf("MENU\n");
@@ -16,11 +18,12 @@ int main(void)
     switch(opcao1)
     {
       case 1:
-      resgitra_funcionario(arquivo); break;
+      resgitra_funcionario(funcionario, arquivo); break;
       
       case 2:
-      quant_linhas(arquivo);
-      returna_vetor(arquivo);
+      quantifica_funcionarios(arquivo);
+      carrega_dados(funcionario, arquivo);
+      libera_funcionarios(funcionario);
 
     }
   }

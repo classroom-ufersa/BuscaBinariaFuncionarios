@@ -11,10 +11,10 @@ struct funcionario
     char nome[21], cargo[21], documento[21];
 };
 
-void *resgitra_funcionario(FILE *arquivo)
+void resgitra_funcionario(Funcionario *funcionario, FILE *arquivo)
 {
-    Funcionario funcionario;
-    char nome[21], cargo[21], documento[21];
+    funcionario = (Funcionario *) malloc(sizeof(Funcionario));
+
     arquivo = fopen("funcionario.txt", "a");
     if(arquivo == NULL){
         printf("Erro ao abrir o arquivo!\n");
@@ -22,18 +22,19 @@ void *resgitra_funcionario(FILE *arquivo)
     }
     
     printf("Informe o nome:");
-    scanf(" %[^\n]", funcionario.nome);
+    scanf(" %[^\n]", funcionario->nome);
     printf("Informe o cargo:");
-    scanf(" %[^\n]", funcionario.cargo);
+    scanf(" %[^\n]", funcionario->cargo);
     printf("Informe o documento:");
-    scanf(" %[^\n]", funcionario.documento);
+    scanf(" %[^\n]", funcionario->documento);
 
-    fprintf(arquivo, "%s\n%s\n%s\n", funcionario.nome, funcionario.cargo, funcionario.documento);
+    fprintf(arquivo, "%s\n%s\n%s\n", funcionario->nome, funcionario->cargo, funcionario->documento);
 
     fclose(arquivo);
+    free(funcionario);
 }
 
-int quant_linhas(FILE *arquivo)
+int quantifica_funcionarios(FILE *arquivo)
 {
     int nlinhas = 0, c;
     arquivo = fopen("funcionario.txt", "rt");
@@ -49,12 +50,11 @@ int quant_linhas(FILE *arquivo)
     return nlinhas/3;
 }
 
-void returna_vetor(FILE *arquivo)
+Funcionario *carrega_dados(Funcionario *funcionarios, FILE *arquivo)
 {
-    int quant_funcionarios = quant_linhas(arquivo), i;
-    char nome[21], cargo[21], documento[21];
+    int nfuncionarios = quantifica_funcionarios(arquivo), i;
 
-    Funcionario *funcionarios = (Funcionario *) malloc(quant_funcionarios * sizeof(Funcionario));
+    funcionarios = (Funcionario *) malloc(nfuncionarios * sizeof(Funcionario));
     if (funcionarios == NULL){
         printf("Erro ao alocar memória");
         exit(1);
@@ -65,17 +65,21 @@ void returna_vetor(FILE *arquivo)
         printf("Erro ao abrir o arquivo!\n");
         exit(1);
     }
-    for (i = 0; i < quant_funcionarios; i++) {
+    for (i = 0; i < nfuncionarios; i++) {
         fscanf(arquivo, "%s", funcionarios[i].nome);
         fscanf(arquivo, "%s", funcionarios[i].cargo);
         fscanf(arquivo, "%s", funcionarios[i].documento);
     }
 
-    for (i = 0; i < quant_funcionarios; i++) {
+    for (i = 0; i < nfuncionarios; i++) {
         printf("%s\n%s\n%s\n", funcionarios[i].nome, funcionarios[i].cargo, funcionarios[i].documento);
     }
 
     fclose(arquivo);
-    free(funcionarios);
+    return funcionarios;
 }
 
+void libera_funcionarios(Funcionario *funcionarios)
+{
+    free(funcionarios);
+}
