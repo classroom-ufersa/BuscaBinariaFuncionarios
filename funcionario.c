@@ -14,7 +14,6 @@ struct funcionario
 void *resgitra_funcionario(FILE *arquivo)
 {
     Funcionario funcionario;
-    char nome[21], cargo[21], documento[21];
     arquivo = fopen("funcionario.txt", "a");
     if(arquivo == NULL){
         printf("Erro ao abrir o arquivo!\n");
