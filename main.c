@@ -4,7 +4,7 @@
 
 int main(void)
 {
-  int opcao1, opcao2, nfuncionarios;
+  int opcao1, opcao2, nfuncionarios, resultado;
   Funcionario *funcionario;
   FILE *arquivo;
 
@@ -22,12 +22,23 @@ int main(void)
       
       case 2:
       nfuncionarios = quantifica_funcionarios(arquivo);
+
       carrega_dados(funcionario, arquivo, nfuncionarios);
+
       libera_funcionarios(funcionario);
-      default:
-      printf("Opção Inválida.\n");
+
+      resultado = buscaBinaria(funcionario, nfuncionarios);
+
+      if (resultado == -1){
+        printf("Funcionário não encontrado\n");
+      } 
+
+      else{
+        printf("Funcionário encontrado\n");
+      }
     }
   }
+
   while(opcao1 != 3);
 
   return 0;
