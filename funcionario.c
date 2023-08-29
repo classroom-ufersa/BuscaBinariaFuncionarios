@@ -79,23 +79,7 @@ void libera_funcionarios(Funcionario *funcionarios)
     free(funcionarios);
 }
 
-int buscaBinaria(Funcionario *funcionarios, int tamanho)
-{
-    char chave[21];
-    printf("Informe o Nome ou Documento: ");
-    scanf(" %[^\n]", chave);
-    int inicio = 0;
-    int fim = tamanho - 1;
-    int meio;
-    while (inicio <= fim) {
-        meio = (inicio + fim) / 2;
-        if (funcionarios[meio].nome == chave || funcionarios[meio].documento == chave) {
-            return meio;
-        } else if (funcionarios[meio].nome < chave || funcionarios[meio].documento < chave) {
-            inicio = meio + 1;
-        } else {
-            fim = meio - 1;
-        }
-    }
-    return -1;
-}
+//1. Criar função para ler somente os nomes e documentos do arquivo e retornar ordenado
+
+//2. Passar os vetores ordenados para função de busca binaria
+ 
