@@ -4,7 +4,7 @@
 
 int main(void)
 {
-  int opcao1, opcao2;
+  int opcao1, opcao2, nfuncionarios;
   Funcionario *funcionario;
   FILE *arquivo;
 
@@ -21,10 +21,11 @@ int main(void)
       resgitra_funcionario(funcionario, arquivo); break;
       
       case 2:
-      quantifica_funcionarios(arquivo);
-      carrega_dados(funcionario, arquivo);
+      nfuncionarios = quantifica_funcionarios(arquivo);
+      carrega_dados(funcionario, arquivo, nfuncionarios);
       libera_funcionarios(funcionario);
-
+      default:
+      printf("Opção Inválida.\n");
     }
   }
   while(opcao1 != 3);

@@ -50,10 +50,9 @@ int quantifica_funcionarios(FILE *arquivo)
     return nlinhas/3;
 }
 
-Funcionario *carrega_dados(Funcionario *funcionarios, FILE *arquivo)
+Funcionario *carrega_dados(Funcionario *funcionarios, FILE *arquivo, int nfuncionarios)
 {
-    int nfuncionarios = quantifica_funcionarios(arquivo), i;
-
+    int i;
     funcionarios = (Funcionario *) malloc(nfuncionarios * sizeof(Funcionario));
     if (funcionarios == NULL){
         printf("Erro ao alocar memória");
@@ -83,3 +82,4 @@ void libera_funcionarios(Funcionario *funcionarios)
 {
     free(funcionarios);
 }
+
