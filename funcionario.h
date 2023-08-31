@@ -10,4 +10,6 @@ Funcionario *carrega_dados(Funcionario *funcionarios, FILE *arquivo, int nfuncio
 
 void libera_funcionarios(Funcionario *funcionarios);
 
-int buscaBinaria(Funcionario *funcionarios, int tamanho);
+int compararNomes(const void *a, const void *b);
+
+int buscaBinariaNome(Funcionario *funcionarios, int nfuncionarios);

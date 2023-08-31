@@ -28,10 +28,9 @@ void resgitra_funcionario(Funcionario *funcionario, FILE *arquivo)
     printf("Informe o documento:");
     scanf(" %[^\n]", funcionario->documento);
 
-    fprintf(arquivo, "%s\n%s\n%s", funcionario->nome, funcionario->cargo, funcionario->documento);
+    fprintf(arquivo, "%s\n%s\n%s\n", funcionario->nome, funcionario->cargo, funcionario->documento);
 
     fclose(arquivo);
-    free(funcionario);
 }
 
 int quantifica_funcionarios(FILE *arquivo)
@@ -40,7 +39,7 @@ int quantifica_funcionarios(FILE *arquivo)
     arquivo = fopen("funcionario.txt", "rt");
     if(arquivo == NULL){
         printf("Erro ao abrir!\n");
-        return 1;
+        exit(1);
     }
     while((c = fgetc(arquivo)) != EOF){
         if(c == '\n'){
@@ -79,23 +78,36 @@ void libera_funcionarios(Funcionario *funcionarios)
     free(funcionarios);
 }
 
-int buscaBinaria(Funcionario *funcionarios, int tamanho)
-{
+int compararNomes(const void *a, const void *b) {
+    Funcionario *funcionarioA = (Funcionario *)a;
+    Funcionario *funcionarioB = (Funcionario *)b;
+    return strcmp(funcionarioA->nome, funcionarioB->nome);
+}
+
+int buscaBinariaNome(Funcionario *funcionarios, int nfuncionarios) {
     char chave[21];
-    printf("Informe o Nome ou Documento: ");
+    printf("Informe o nome:");
     scanf(" %[^\n]", chave);
+    
+    qsort(funcionarios, nfuncionarios, sizeof(Funcionario), compararNomes);
+
     int inicio = 0;
-    int fim = tamanho - 1;
+    int fim = nfuncionarios - 1;
     int meio;
+    
     while (inicio <= fim) {
         meio = (inicio + fim) / 2;
-        if (funcionarios[meio].nome == chave || funcionarios[meio].documento == chave) {
+        
+        int comparacao = strcmp(funcionarios[meio].nome, chave);
+        
+        if (comparacao == 0) {
             return meio;
-        } else if (funcionarios[meio].nome < chave || funcionarios[meio].documento < chave) {
+        } else if (comparacao < 0) {
             inicio = meio + 1;
         } else {
             fim = meio - 1;
         }
     }
+    
     return -1;
 }

@@ -5,8 +5,8 @@
 int main(void)
 {
   int opcao1, opcao2, nfuncionarios, resultado;
-  Funcionario *funcionario;
-  FILE *arquivo;
+  Funcionario *funcionario = NULL; 
+  FILE *arquivo = NULL; 
 
   do
   {
@@ -23,23 +23,20 @@ int main(void)
       case 2:
       nfuncionarios = quantifica_funcionarios(arquivo);
 
-      carrega_dados(funcionario, arquivo, nfuncionarios);
+      funcionario = carrega_dados(funcionario, arquivo, nfuncionarios); // Aloque memória aqui
 
-      libera_funcionarios(funcionario);
-
-      resultado = buscaBinaria(funcionario, nfuncionarios);
-
-      if (resultado == -1){
-        printf("Funcionário não encontrado\n");
-      } 
-
-      else{
-        printf("Funcionário encontrado\n");
-      }
+      buscaBinariaNome(funcionario, nfuncionarios);
+      int posicao = buscaBinariaNome(funcionario, nfuncionarios);
+    if (posicao == -1) {
+        printf("Valor não encontrado\n");
+    } else {
+        printf("Valor encontrado na posição %d\n", posicao);
     }
-  }
-
-  while(opcao1 != 3);
+      
+      libera_funcionarios(funcionario);
+      break; 
+    }
+  } while(opcao1 != 3);
 
   return 0;
 }
