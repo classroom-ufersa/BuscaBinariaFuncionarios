@@ -1,7 +1,7 @@
 # strings_com_busca_binaria
 Busca de strings com busca binária
 
-Implemente um alogritmo que manipula um tipo estruturadoo Funcionários e possui a funcionalidade de buscar os funcionários em um arquivo.
+Implemente um alogritmo que manipula um tipo estruturado  Funcionários e possui a funcionalidade de buscar os funcionários em um arquivo.
 
 Os funcionários devem ter os atributos básicos:
 
