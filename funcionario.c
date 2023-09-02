@@ -78,10 +78,18 @@ void libera_funcionarios(Funcionario *funcionarios)
     free(funcionarios);
 }
 
-int compararNomes(const void *a, const void *b) {
+int compararNomes(const void *a, const void *b)
+{
     Funcionario *funcionarioA = (Funcionario *)a;
     Funcionario *funcionarioB = (Funcionario *)b;
     return strcmp(funcionarioA->nome, funcionarioB->nome);
+}
+
+int compararDocumentos(const void *a, const void *b)
+{
+    Funcionario *funcionarioA = (Funcionario *)a;
+    Funcionario *funcionarioB = (Funcionario *)b;
+    return strcmp(funcionarioA->documento, funcionarioB->documento);
 }
 
 int buscaBinariaNome(Funcionario *funcionarios, int nfuncionarios) {
@@ -111,3 +119,32 @@ int buscaBinariaNome(Funcionario *funcionarios, int nfuncionarios) {
     
     return -1;
 }
+
+int buscaBinariaDocumento(Funcionario *funcionarios, int nfuncionarios) {
+    char chave[21];
+    printf("Informe o Documento:");
+    scanf(" %[^\n]", chave);
+    
+    qsort(funcionarios, nfuncionarios, sizeof(Funcionario), compararDocumentos);
+
+    int inicio = 0;
+    int fim = nfuncionarios - 1;
+    int meio;
+    
+    while (inicio <= fim) {
+        meio = (inicio + fim) / 2;
+        
+        int comparacao = strcmp(funcionarios[meio].documento, chave);
+        
+        if (comparacao == 0) {
+            return meio;
+        } else if (comparacao < 0) {
+            inicio = meio + 1;
+        } else {
+            fim = meio - 1;
+        }
+    }
+    
+    return -1;
+}
+

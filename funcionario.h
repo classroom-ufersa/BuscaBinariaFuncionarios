@@ -12,4 +12,8 @@ void libera_funcionarios(Funcionario *funcionarios);
 
 int compararNomes(const void *a, const void *b);
 
+int compararDocumentos(const void *a, const void *b);
+
 int buscaBinariaNome(Funcionario *funcionarios, int nfuncionarios);
+
+int buscaBinariaDocumento(Funcionario *funcionarios, int nfuncionarios);

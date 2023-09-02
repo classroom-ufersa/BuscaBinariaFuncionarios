@@ -32,7 +32,13 @@ int main(void)
     } else {
         printf("Valor encontrado na posição %d\n", posicao);
     }
-      
+    buscaBinariaDocumento(funcionario, nfuncionarios);
+      int posicao1 = buscaBinariaDocumento(funcionario, nfuncionarios);
+      if (posicao1 == -1) {
+        printf("Valor não encontrado\n");
+    } else {
+        printf("Valor encontrado na posição %d\n", posicao1);
+    }
       libera_funcionarios(funcionario);
       break; 
     }
