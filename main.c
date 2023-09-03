@@ -19,7 +19,7 @@ int main(void)
     switch(opcao1)
     {
       case 1:
-      resgitra_funcionario(funcionario, arquivo); break;
+      resgitrafuncionario(funcionario, arquivo); break;
 
       case 2:
       printf("\n1 - Buscar Pelo Nome\n");
@@ -31,9 +31,9 @@ int main(void)
         double tempo;
         time_t TempoInicial, TempoFinal;
         TempoInicial=clock();
-        nfuncionarios = quantifica_funcionarios(arquivo);
+        nfuncionarios = quantificafuncionarios(arquivo);
 
-        funcionario = carrega_dados(funcionario, arquivo, nfuncionarios);
+        funcionario = carregadados(funcionario, arquivo, nfuncionarios);
 
         resultado = buscaBinariaNome(funcionario, nfuncionarios);
         TempoFinal=clock();
@@ -47,9 +47,9 @@ int main(void)
         break;
 
         case 2:
-        nfuncionarios = quantifica_funcionarios(arquivo);
+        nfuncionarios = quantificafuncionarios(arquivo);
 
-        funcionario = carrega_dados(funcionario, arquivo, nfuncionarios);
+        funcionario = carregadados(funcionario, arquivo, nfuncionarios);
 
         resultado = buscaBinariaDocumento(funcionario, nfuncionarios);
         if (resultado == -1){
