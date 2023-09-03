@@ -19,31 +19,40 @@ int main(void)
     {
       case 1:
       resgitra_funcionario(funcionario, arquivo); break;
-      
+
       case 2:
-      nfuncionarios = quantifica_funcionarios(arquivo);
+      printf("\n1 - Buscar Pelo Nome\n");
+      printf("2 - Buscar Pelo Documento\n");
+      scanf(" %d", &opcao2);
+      switch(opcao2)
+      {
+        case 1:
+        nfuncionarios = quantifica_funcionarios(arquivo);
 
-      funcionario = carrega_dados(funcionario, arquivo, nfuncionarios); // Aloque memória aqui
+        funcionario = carrega_dados(funcionario, arquivo, nfuncionarios);
 
-      buscaBinariaNome(funcionario, nfuncionarios);
-      int posicao = buscaBinariaNome(funcionario, nfuncionarios);
-    if (posicao == -1) {
-        printf("Valor não encontrado\n");
-    } else {
-        printf("Valor encontrado na posição %d\n", posicao);
-    }
-    buscaBinariaDocumento(funcionario, nfuncionarios);
-      int posicao1 = buscaBinariaDocumento(funcionario, nfuncionarios);
-      if (posicao1 == -1) {
-        printf("Valor não encontrado\n");
-    } else {
-        printf("Valor encontrado na posição %d\n", posicao1);
-    }
-      libera_funcionarios(funcionario);
-      break; 
-    }
-  } while(opcao1 != 3);
+        resultado = buscaBinariaNome(funcionario, nfuncionarios);
+        if (resultado == -1){
+          printf("Funcionário Não Encontrado\n\n");
+        } else{
+          printf("Funcionário Encontrado\n\n");
+        }
+        break;
 
-  return 0;
+        case 2:
+        nfuncionarios = quantifica_funcionarios(arquivo);
+
+        funcionario = carrega_dados(funcionario, arquivo, nfuncionarios);
+
+        resultado = buscaBinariaDocumento(funcionario, nfuncionarios);
+        if (resultado == -1){
+          printf("Funcionário Não Encontrado\n\n");
+        } else{
+          printf("Funcionário Encontrado\n\n");
+        }
+        break;
+      }
+    }
+  }while(opcao1 != 3); 
+return 0;
 }
-
