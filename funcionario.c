@@ -12,7 +12,7 @@ struct funcionario
     char nome[21], cargo[21], documento[21];
 };
 
-void formata_string(char nome[21]) {
+void formataString(char nome[21]) {
     int i = 0;
     while (nome[i] != '\0') {
         if (i == 0) {
@@ -24,7 +24,7 @@ void formata_string(char nome[21]) {
     }
 }
 
-void resgitra_funcionario(Funcionario *funcionario, FILE *arquivo)
+void registraFuncionario(Funcionario *funcionario, FILE *arquivo)
 {
     char nome[21], cargo[21];
     funcionario = (Funcionario *) malloc(sizeof(Funcionario));
@@ -41,12 +41,12 @@ void resgitra_funcionario(Funcionario *funcionario, FILE *arquivo)
 
     printf("Informe o nome:");
     scanf(" %20[^\n]", nome);
-    formata_string(nome);
+    formataString(nome);
     strcpy(funcionario->nome, nome);
 
     printf("Informe o cargo:");
     scanf(" %20[^\n]", cargo);
-    formata_string(cargo);
+    formataString(cargo);
     strcpy(funcionario->cargo, cargo);
 
     printf("Informe o documento:");
@@ -57,7 +57,7 @@ void resgitra_funcionario(Funcionario *funcionario, FILE *arquivo)
     fclose(arquivo);
 }
 
-int quantifica_funcionarios(FILE *arquivo)
+int quantificaFuncionarios(FILE *arquivo)
 {
     int nlinhas = 0, c;
     arquivo = fopen("funcionario.txt", "rt");
@@ -73,7 +73,7 @@ int quantifica_funcionarios(FILE *arquivo)
     return nlinhas/3;
 }
 
-Funcionario *carrega_dados(Funcionario *funcionarios, FILE *arquivo, int nfuncionarios)
+Funcionario *carregaDados(Funcionario *funcionarios, FILE *arquivo, int nfuncionarios)
 {
     int i;
     funcionarios = (Funcionario *) malloc(nfuncionarios * sizeof(Funcionario));
@@ -97,7 +97,7 @@ Funcionario *carrega_dados(Funcionario *funcionarios, FILE *arquivo, int nfuncio
     return funcionarios;
 }
 
-void libera_funcionarios(Funcionario *funcionarios)
+void liberaFuncionarios(Funcionario *funcionarios)
 {
     free(funcionarios);
 }
@@ -115,7 +115,7 @@ int compararDocumentos(const void *a, const void *b)
     Funcionario *funcionarioB = (Funcionario *)b;
     return strcmp(funcionarioA->documento, funcionarioB->documento);
 }
- inicio = clock();
+
 int buscaBinariaNome(Funcionario *funcionarios, int nfuncionarios) {
     char chave[21];
     printf("Informe o nome:");
@@ -167,9 +167,9 @@ int buscaBinariaDocumento(Funcionario *funcionarios, int nfuncionarios) {
         } else {
             fim = meio - 1;
         }
-        fim = clock();
     }
     
     return -1;
 }
+
 
