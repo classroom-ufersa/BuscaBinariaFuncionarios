@@ -4,22 +4,22 @@
 
 #include <stdio.h>
 
-typedef struct funcionario Funcionario;
+typedef struct funcionario Funcionario;// Define uma estrutura para armazenar informações dos funcionários
 
-void registra_funcionario(Funcionario *funcionario, FILE *arquivo);
+void registra_funcionario(Funcionario *funcionario, FILE *arquivo);// Função para registrar um novo funcionário e armazenar suas informações em um arquivo
 
-int quantifica_funcionarios(FILE *arquivo);
+int quantifica_funcionarios(FILE *arquivo);// Função para contar o número de funcionários do arquivo
 
-Funcionario *carrega_dados(Funcionario *funcionarios, FILE *arquivo, int nfuncionarios);
+Funcionario *carrega_dados(Funcionario *funcionarios, FILE *arquivo, int nfuncionarios);// Função para carregar dados de funcionários de um arquivo em um array 
 
-void libera_funcionarios(Funcionario *funcionarios);
+void libera_funcionarios(Funcionario *funcionarios);// Função para liberar a memória alocada para o array de funcionários
 
-int compararNomes(const void *a, const void *b);
+int compararNomes(const void *a, const void *b);// Função para comparar nomes de funcionários para ordenação
 
-int compararDocumentos(const void *a, const void *b);
+int compararDocumentos(const void *a, const void *b);// Função para comparar documentos de funcionários para ordenação
 
-int buscaBinariaNome(Funcionario *funcionarios, int nfuncionarios);
+int buscaBinariaNome(Funcionario *funcionarios, int nfuncionarios);// Função para realizar uma busca binária de um funcionário pelo nome
 
-int buscaBinariaDocumento(Funcionario *funcionarios, int nfuncionarios);
+int buscaBinariaDocumento(Funcionario *funcionarios, int nfuncionarios);// Função para realizar uma busca binária de um funcionário pelo documento
 
 #endif
