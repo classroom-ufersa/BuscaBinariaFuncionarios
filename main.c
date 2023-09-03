@@ -5,7 +5,7 @@
 
 int main(void)
 {
-  int opcao1, opcao2, nfuncionarios, resultado;
+  int opcao1, opcao2, totalFuncionarios, resultado;
   Funcionario *funcionario = NULL; 
   FILE *arquivo = NULL; 
 
@@ -22,43 +22,46 @@ int main(void)
       resgitra_funcionario(funcionario, arquivo); break;
 
       case 2:
-      printf("\n1 - Buscar Pelo Nome\n");
+      printf("\nOpções de Busca\n");
+      printf("1 - Buscar Pelo Nome\n");
       printf("2 - Buscar Pelo Documento\n");
       scanf(" %d", &opcao2);
       switch(opcao2)
       {
         case 1:
-        double tempo;
-        time_t TempoInicial, TempoFinal;
-        TempoInicial=clock();
-        nfuncionarios = quantifica_funcionarios(arquivo);
+        totalFuncionarios = quantifica_funcionarios(arquivo);
 
-        funcionario = carrega_dados(funcionario, arquivo, nfuncionarios);
+        funcionario = carrega_dados(funcionario, arquivo, totalFuncionarios);
 
-        resultado = buscaBinariaNome(funcionario, nfuncionarios);
-        TempoFinal=clock();
-        tempo=((double)(TempoFinal-TempoInicial))/CLOCKS_PER_SEC;
-        printf("Tempo de execução: %f.\n", tempo);
+        resultado = buscaBinariaNome(funcionario, totalFuncionarios);
+
         if (resultado == -1){
           printf("Funcionário Não Encontrado\n\n");
         } else{
           printf("Funcionário Encontrado\n\n");
         }
-        break;
+
+        libera_funcionarios(funcionario); break;
 
         case 2:
-        nfuncionarios = quantifica_funcionarios(arquivo);
+        totalFuncionarios = quantifica_funcionarios(arquivo);
 
-        funcionario = carrega_dados(funcionario, arquivo, nfuncionarios);
+        funcionario = carrega_dados(funcionario, arquivo, totalFuncionarios);
 
-        resultado = buscaBinariaDocumento(funcionario, nfuncionarios);
+        resultado = buscaBinariaDocumento(funcionario, totalFuncionarios);
         if (resultado == -1){
           printf("Funcionário Não Encontrado\n\n");
         } else{
           printf("Funcionário Encontrado\n\n");
         }
-        break;
+
+        libera_funcionarios(funcionario); break;
+
+        default:
+        printf("Opção Inválida.\n");
       }
+      default:
+        printf("Opção Inválida.\n");
     }
   }while(opcao1 != 3); 
 return 0;

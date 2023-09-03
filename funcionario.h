@@ -18,3 +18,5 @@ int compararDocumentos(const void *a, const void *b);
 int buscaBinariaNome(Funcionario *funcionarios, int nfuncionarios);
 
 int buscaBinariaDocumento(Funcionario *funcionarios, int nfuncionarios);
+
+void LimpaBuffer(void);

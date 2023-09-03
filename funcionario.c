@@ -24,6 +24,15 @@ void formata_string(char nome[21]) {
     }
 }
 
+void LimpaBuffer(void)
+{
+    int valorLido;
+    do
+    {
+        valorLido = getchar();
+    } while ((valorLido != '\n') && (valorLido != EOF));
+}
+
 void resgitra_funcionario(Funcionario *funcionario, FILE *arquivo)
 {
     char nome[21], cargo[21];
@@ -53,7 +62,7 @@ void resgitra_funcionario(Funcionario *funcionario, FILE *arquivo)
     scanf(" %[^\n]", funcionario->documento);
 
     fprintf(arquivo, "%s\n%s\n%s\n", funcionario->nome, funcionario->cargo, funcionario->documento);
-
+    LimpaBuffer();
     fclose(arquivo);
 }
 
@@ -93,6 +102,7 @@ Funcionario *carrega_dados(Funcionario *funcionarios, FILE *arquivo, int nfuncio
         fscanf(arquivo, "%s", funcionarios[i].documento);
     }
 
+    LimpaBuffer();
     fclose(arquivo);
     return funcionarios;
 }
@@ -115,8 +125,9 @@ int compararDocumentos(const void *a, const void *b)
     Funcionario *funcionarioB = (Funcionario *)b;
     return strcmp(funcionarioA->documento, funcionarioB->documento);
 }
- inicio = clock();
-int buscaBinariaNome(Funcionario *funcionarios, int nfuncionarios) {
+
+int buscaBinariaNome(Funcionario *funcionarios, int nfuncionarios)
+{
     char chave[21];
     printf("Informe o nome:");
     scanf(" %[^\n]", chave);
@@ -144,7 +155,9 @@ int buscaBinariaNome(Funcionario *funcionarios, int nfuncionarios) {
     return -1;
 }
 
-int buscaBinariaDocumento(Funcionario *funcionarios, int nfuncionarios) {
+
+int buscaBinariaDocumento(Funcionario *funcionarios, int nfuncionarios)
+{
     char chave[21];
     printf("Informe o Documento:");
     scanf(" %[^\n]", chave);
@@ -167,7 +180,6 @@ int buscaBinariaDocumento(Funcionario *funcionarios, int nfuncionarios) {
         } else {
             fim = meio - 1;
         }
-        fim = clock();
     }
     
     return -1;
