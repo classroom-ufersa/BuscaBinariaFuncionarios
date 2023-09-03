@@ -1,9 +1,12 @@
 //Implementação da interface das funções
+#ifndef FUNCIONARIO_H
+#define FUNCIONARIO_H
+
 #include <stdio.h>
 
 typedef struct funcionario Funcionario;
 
-void resgitra_funcionario(Funcionario *funcionario, FILE *arquivo);
+void registra_funcionario(Funcionario *funcionario, FILE *arquivo);
 
 int quantifica_funcionarios(FILE *arquivo);
 
@@ -18,3 +21,5 @@ int compararDocumentos(const void *a, const void *b);
 int buscaBinariaNome(Funcionario *funcionarios, int nfuncionarios);
 
 int buscaBinariaDocumento(Funcionario *funcionarios, int nfuncionarios);
+
+#endif
