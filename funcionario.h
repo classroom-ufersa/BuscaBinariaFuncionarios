@@ -7,16 +7,16 @@
 typedef struct funcionario Funcionario;
 
 // Função para registrar um novo funcionário e armazenar suas informações em um arquivo
-void registra_funcionario(Funcionario *funcionario, FILE *arquivo);
+void registrafuncionario(Funcionario *funcionario, FILE *arquivo);
 
 // Função para contar o número de funcionários do arquivo
-int quantifica_funcionarios(FILE *arquivo);
+int quantificafuncionarios(FILE *arquivo);
 
 // Função para carregar dados de funcionários de um arquivo em um array 
-Funcionario *carrega_dados(Funcionario *funcionarios, FILE *arquivo, int nfuncionarios);
+Funcionario *carregadados(Funcionario *funcionarios, FILE *arquivo, int nfuncionarios);
 
 // Função para liberar a memória alocada para o array 
-void libera_funcionarios(Funcionario *funcionarios);
+void liberafuncionarios(Funcionario *funcionarios);
 
 // Função para comparar nomes de funcionários para ordenação
 int compararNomes(const void *a, const void *b);
