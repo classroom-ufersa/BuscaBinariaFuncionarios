@@ -4,7 +4,7 @@
 
 #include <stdio.h>
 
-typedef struct funcionario Funcionario;// Define uma estrutura para armazenar informações dos funcionários
+typedef struct funcionario Funcionario;
 
 void registra_funcionario(Funcionario *funcionario, FILE *arquivo);// Função para registrar um novo funcionário e armazenar suas informações em um arquivo
 
