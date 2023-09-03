@@ -1,5 +1,6 @@
 //Implementação da interface das funções
 #include <stdio.h>
+
 typedef struct funcionario Funcionario;
 
 void resgitra_funcionario(Funcionario *funcionario, FILE *arquivo);

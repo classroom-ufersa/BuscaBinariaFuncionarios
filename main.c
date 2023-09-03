@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 #include "funcionario.h"
 
 int main(void)
@@ -10,7 +11,7 @@ int main(void)
 
   do
   {
-    printf("MENU\n");
+    printf("\nMENU\n");
     printf("1 - Registrar Funcionário\n");
     printf("2 - Buscar Funcionário\n");
     printf("3 - Sair\n");
@@ -27,11 +28,17 @@ int main(void)
       switch(opcao2)
       {
         case 1:
+        double tempo;
+        time_t TempoInicial, TempoFinal;
+        TempoInicial=clock();
         nfuncionarios = quantifica_funcionarios(arquivo);
 
         funcionario = carrega_dados(funcionario, arquivo, nfuncionarios);
 
         resultado = buscaBinariaNome(funcionario, nfuncionarios);
+        TempoFinal=clock();
+        tempo=((double)(TempoFinal-TempoInicial))/CLOCKS_PER_SEC;
+        printf("Tempo de execução: %f.\n", tempo);
         if (resultado == -1){
           printf("Funcionário Não Encontrado\n\n");
         } else{

@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+#include <ctype.h>
 #include "funcionario.h"
 
 struct funcionario
@@ -11,20 +12,43 @@ struct funcionario
     char nome[21], cargo[21], documento[21];
 };
 
+void formata_string(char nome[21]) {
+    int i = 0;
+    while (nome[i] != '\0') {
+        if (i == 0) {
+            nome[i] = toupper(nome[i]); 
+        } else {
+            nome[i] = tolower(nome[i]); 
+        }
+        i++;
+    }
+}
+
 void resgitra_funcionario(Funcionario *funcionario, FILE *arquivo)
 {
+    char nome[21], cargo[21];
     funcionario = (Funcionario *) malloc(sizeof(Funcionario));
+    if(funcionario == NULL){
+        printf("Erro ao abrir o arquivo!\n");
+        exit(1);
+    }
 
     arquivo = fopen("funcionario.txt", "a");
     if(arquivo == NULL){
         printf("Erro ao abrir o arquivo!\n");
         exit(1);
     }
-    
+
     printf("Informe o nome:");
-    scanf(" %[^\n]", funcionario->nome);
+    scanf(" %20[^\n]", nome);
+    formata_string(nome);
+    strcpy(funcionario->nome, nome);
+
     printf("Informe o cargo:");
-    scanf(" %[^\n]", funcionario->cargo);
+    scanf(" %20[^\n]", cargo);
+    formata_string(cargo);
+    strcpy(funcionario->cargo, cargo);
+
     printf("Informe o documento:");
     scanf(" %[^\n]", funcionario->documento);
 
