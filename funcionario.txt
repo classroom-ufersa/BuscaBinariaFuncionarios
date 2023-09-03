@@ -1,9 +1,3 @@
 Gabriel
 Professor
-1234
-Natyel
-Aluno
-4321
-Carlos
-Jogador
-456
+123

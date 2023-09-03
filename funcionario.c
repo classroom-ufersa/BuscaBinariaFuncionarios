@@ -125,12 +125,13 @@ int compararDocumentos(const void *a, const void *b)
     Funcionario *funcionarioB = (Funcionario *)b;
     return strcmp(funcionarioA->documento, funcionarioB->documento);
 }
- inicio = clock();
+
+
 int buscaBinariaNome(Funcionario *funcionarios, int nfuncionarios) {
     char chave[21];
     printf("Informe o nome:");
     scanf(" %[^\n]", chave);
-    
+    formataString(chave);
     qsort(funcionarios, nfuncionarios, sizeof(Funcionario), compararNomes);
 
     int inicio = 0;
@@ -160,7 +161,7 @@ int buscaBinariaDocumento(Funcionario *funcionarios, int nfuncionarios)
     char chave[21];
     printf("Informe o Documento:");
     scanf(" %[^\n]", chave);
-    
+    formataString(chave);
     qsort(funcionarios, nfuncionarios, sizeof(Funcionario), compararDocumentos);
 
     int inicio = 0;
