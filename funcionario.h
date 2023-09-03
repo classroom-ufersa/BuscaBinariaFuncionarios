@@ -6,20 +6,28 @@
 
 typedef struct funcionario Funcionario;
 
-void registra_funcionario(Funcionario *funcionario, FILE *arquivo);// Função para registrar um novo funcionário e armazenar suas informações em um arquivo
+// Função para registrar um novo funcionário e armazenar suas informações em um arquivo
+void registra_funcionario(Funcionario *funcionario, FILE *arquivo);
 
-int quantifica_funcionarios(FILE *arquivo);// Função para contar o número de funcionários do arquivo
+// Função para contar o número de funcionários do arquivo
+int quantifica_funcionarios(FILE *arquivo);
 
-Funcionario *carrega_dados(Funcionario *funcionarios, FILE *arquivo, int nfuncionarios);// Função para carregar dados de funcionários de um arquivo em um array 
+// Função para carregar dados de funcionários de um arquivo em um array 
+Funcionario *carrega_dados(Funcionario *funcionarios, FILE *arquivo, int nfuncionarios);
 
-void libera_funcionarios(Funcionario *funcionarios);// Função para liberar a memória alocada para o array de funcionários
+// Função para liberar a memória alocada para o array 
+void libera_funcionarios(Funcionario *funcionarios);
 
-int compararNomes(const void *a, const void *b);// Função para comparar nomes de funcionários para ordenação
+// Função para comparar nomes de funcionários para ordenação
+int compararNomes(const void *a, const void *b);
 
-int compararDocumentos(const void *a, const void *b);// Função para comparar documentos de funcionários para ordenação
+// Função para comparar documentos de funcionários para ordenação
+int compararDocumentos(const void *a, const void *b);
 
-int buscaBinariaNome(Funcionario *funcionarios, int nfuncionarios);// Função para realizar uma busca binária de um funcionário pelo nome
+// Função para realizar uma busca binária de um funcionário pelo nome
+int buscaBinariaNome(Funcionario *funcionarios, int nfuncionarios);
 
-int buscaBinariaDocumento(Funcionario *funcionarios, int nfuncionarios);// Função para realizar uma busca binária de um funcionário pelo documento
+// Função para realizar uma busca binária de um funcionário pelo documento
+int buscaBinariaDocumento(Funcionario *funcionarios, int nfuncionarios);
 
 #endif
