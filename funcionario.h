@@ -28,8 +28,11 @@ int buscaBinariaNome(Funcionario *funcionarios, int nfuncionarios, char *nome);
 //Função para realizar uma busca binária de um funcionário pelo documento
 int buscaBinariaDocumento(Funcionario *funcionarios, int nfuncionarios, char *nome);
 
+// Função para verificar o comprimento de uma string
 int verificaString(char nome[21]);
 
+// Função para formatar uma string (removendo espaços em branco extras)
 void formataString(char nome[21]);
 
+// Função para limpar o buffer de entrada
 void LimpaBuffer(void);
