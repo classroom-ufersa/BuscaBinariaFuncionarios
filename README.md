@@ -81,9 +81,7 @@ Busca binária é um algoritmo eficiente para encontrar um elemento específico 
 
 ![Funcionamento da Busca Binária](https://carlacastanho.github.io/Material-de-APC/assets/images/Busca/binaryVSlinear.gif)
 
-##Análise de Complexidade: BuscaBinariaNome
-
-
+## Análise de Complexidade: BuscaBinariaNome
 int buscaBinariaNome(Funcionario *funcionarios, int nfuncionarios, char *nome)
 {
     qsort(funcionarios, nfuncionarios, sizeof(Funcionario), compararNomes);
