@@ -75,6 +75,7 @@ Complexidade de tempo: A função realiza uma pesquisa binária, que é O(log n)
 
 Complexidade de espaço: A função não aloca espaço adicional dependente dos dados de entrada. A complexidade de espaço é constante, O(1).
 
+Tipo de busca:
 
 Busca binária é um algoritmo eficiente para encontrar um elemento específico em uma lista ordenada. Ele funciona dividindo repetidamente a lista pela metade e comparando o valor do elemento desejado com o valor do elemento no meio da lista. Se os valores forem iguais, o elemento foi encontrado. Se o valor do elemento desejado for menor, a busca é realizada na metade inferior da lista. Se o valor for maior, a busca é realizada na metade superior da lista. Esse processo é repetido até que o elemento seja encontrado ou até que a lista seja reduzida a zero. A busca binária tem uma complexidade de tempo de O(log n), o que a torna uma opção eficiente para pesquisar elementos em grandes listas ordenadas.
 
