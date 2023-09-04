@@ -83,7 +83,7 @@ Busca binária é um algoritmo eficiente para encontrar um elemento específico 
 
 ## Análise de Complexidade: BuscaBinariaNome
 
-
+```
 int buscaBinariaNome(Funcionario *funcionarios, int nfuncionarios, char *nome)
 {
     qsort(funcionarios, nfuncionarios, sizeof(Funcionario), compararNomes);
@@ -108,3 +108,4 @@ int buscaBinariaNome(Funcionario *funcionarios, int nfuncionarios, char *nome)
     
     return -1;
 }
+```
