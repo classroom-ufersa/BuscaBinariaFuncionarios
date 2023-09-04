@@ -12,16 +12,38 @@ struct funcionario
     char nome[21], cargo[21], documento[21];
 };
 
-void formataString(char nome[21]) {
+void formataString(char nome[21])
+{
     int i = 0;
-    while (nome[i] != '\0') {
-        if (i == 0) {
-            nome[i] = toupper(nome[i]); 
-        } else {
-            nome[i] = tolower(nome[i]); 
-        }
-        i++;
+    for(i = 0; nome[i] != '\0'; i++){
+        nome[i] = toupper(nome[i]); 
     }
+}
+
+int verificaString(char nome[21])
+{
+    int i;
+    for(i = 0; i < strlen(nome); i++) {
+        if (!isalnum(nome[i])) {
+            printf("Nome Inválido\n");
+            return 0;
+        }
+    }
+    return 1;
+}
+
+int compararNomes(const void *a, const void *b)
+{
+    Funcionario *funcionarioA = (Funcionario *)a;
+    Funcionario *funcionarioB = (Funcionario *)b;
+    return strcmp(funcionarioA->nome, funcionarioB->nome);
+}
+
+int compararDocumentos(const void *a, const void *b)
+{
+    Funcionario *funcionarioA = (Funcionario *)a;
+    Funcionario *funcionarioB = (Funcionario *)b;
+    return strcmp(funcionarioA->documento, funcionarioB->documento);
 }
 
 void LimpaBuffer(void)
@@ -33,34 +55,21 @@ void LimpaBuffer(void)
     } while ((valorLido != '\n') && (valorLido != EOF));
 }
 
-void registraFuncionario(Funcionario *funcionario, FILE *arquivo)
+void registraFuncionario(Funcionario *funcionario, FILE *arquivo, char *nome, char *cargo, char *documento)
 {
-    char nome[21], cargo[21];
     funcionario = (Funcionario *) malloc(sizeof(Funcionario));
     if(funcionario == NULL){
         printf("Erro ao abrir o arquivo!\n");
         exit(1);
     }
-
-    arquivo = fopen("funcionario.txt", "a");
+    arquivo = fopen("funcionarios.txt", "a");
     if(arquivo == NULL){
         printf("Erro ao abrir o arquivo!\n");
         exit(1);
     }
-
-    printf("Informe o nome:");
-    scanf(" %20[^\n]", nome);
-    formataString(nome);
     strcpy(funcionario->nome, nome);
-
-    printf("Informe o cargo:");
-    scanf(" %20[^\n]", cargo);
-    formataString(cargo);
     strcpy(funcionario->cargo, cargo);
-
-    printf("Informe o documento:");
-    scanf(" %[^\n]", funcionario->documento);
-
+    strcpy(funcionario->documento, documento);
     fprintf(arquivo, "%s\n%s\n%s\n", funcionario->nome, funcionario->cargo, funcionario->documento);
     LimpaBuffer();
     fclose(arquivo);
@@ -69,7 +78,7 @@ void registraFuncionario(Funcionario *funcionario, FILE *arquivo)
 int quantificaFuncionarios(FILE *arquivo)
 {
     int nlinhas = 0, c;
-    arquivo = fopen("funcionario.txt", "rt");
+    arquivo = fopen("funcionarios.txt", "rt");
     if(arquivo == NULL){
         printf("Erro ao abrir!\n");
         exit(1);
@@ -91,7 +100,7 @@ Funcionario *carregaDados(Funcionario *funcionarios, FILE *arquivo, int nfuncion
         exit(1);
     }
     
-    arquivo = fopen("funcionario.txt", "rt");
+    arquivo = fopen("funcionarios.txt", "rt");
     if(arquivo == NULL){
         printf("Erro ao abrir o arquivo!\n");
         exit(1);
@@ -112,26 +121,8 @@ void liberaFuncionarios(Funcionario *funcionarios)
     free(funcionarios);
 }
 
-int compararNomes(const void *a, const void *b)
+int buscaBinariaNome(Funcionario *funcionarios, int nfuncionarios, char *nome)
 {
-    Funcionario *funcionarioA = (Funcionario *)a;
-    Funcionario *funcionarioB = (Funcionario *)b;
-    return strcmp(funcionarioA->nome, funcionarioB->nome);
-}
-
-int compararDocumentos(const void *a, const void *b)
-{
-    Funcionario *funcionarioA = (Funcionario *)a;
-    Funcionario *funcionarioB = (Funcionario *)b;
-    return strcmp(funcionarioA->documento, funcionarioB->documento);
-}
-
-
-int buscaBinariaNome(Funcionario *funcionarios, int nfuncionarios) {
-    char chave[21];
-    printf("Informe o nome:");
-    scanf(" %[^\n]", chave);
-    formataString(chave);
     qsort(funcionarios, nfuncionarios, sizeof(Funcionario), compararNomes);
 
     int inicio = 0;
@@ -141,7 +132,7 @@ int buscaBinariaNome(Funcionario *funcionarios, int nfuncionarios) {
     while (inicio <= fim) {
         meio = (inicio + fim) / 2;
         
-        int comparacao = strcmp(funcionarios[meio].nome, chave);
+        int comparacao = strcmp(funcionarios[meio].nome, nome);
         
         if (comparacao == 0) {
             return meio;
@@ -156,12 +147,8 @@ int buscaBinariaNome(Funcionario *funcionarios, int nfuncionarios) {
 }
 
 
-int buscaBinariaDocumento(Funcionario *funcionarios, int nfuncionarios)
+int buscaBinariaDocumento(Funcionario *funcionarios, int nfuncionarios, char *documento)
 {
-    char chave[21];
-    printf("Informe o Documento:");
-    scanf(" %[^\n]", chave);
-    formataString(chave);
     qsort(funcionarios, nfuncionarios, sizeof(Funcionario), compararDocumentos);
 
     int inicio = 0;
@@ -171,7 +158,7 @@ int buscaBinariaDocumento(Funcionario *funcionarios, int nfuncionarios)
     while (inicio <= fim) {
         meio = (inicio + fim) / 2;
         
-        int comparacao = strcmp(funcionarios[meio].documento, chave);
+        int comparacao = strcmp(funcionarios[meio].documento, documento);
         
         if (comparacao == 0) {
             return meio;

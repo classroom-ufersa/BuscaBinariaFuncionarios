@@ -4,7 +4,7 @@
 typedef struct funcionario Funcionario;
 
 // Função para registrar um novo funcionário e armazenar suas informações em um arquivo
-void registraFuncionario(Funcionario *funcionario, FILE *arquivo);
+void registraFuncionario(Funcionario *funcionario, FILE *arquivo, char *nome, char *cargo, char *documento);
 
 // Função para contar o número de funcionários do arquivo
 int quantificaFuncionarios(FILE *arquivo);
@@ -25,8 +25,14 @@ int compararDocumentos(const void *a, const void *b);
 
 
 // Função para realizar uma busca binária de um funcionário pelo nome
-int buscaBinariaNome(Funcionario *funcionarios, int nfuncionarios);
+int buscaBinariaNome(Funcionario *funcionarios, int nfuncionarios, char *nome);
 
 
 //Função para realizar uma busca binária de um funcionário pelo documento
-int buscaBinariaDocumento(Funcionario *funcionarios, int nfuncionarios);
+int buscaBinariaDocumento(Funcionario *funcionarios, int nfuncionarios, char *nome);
+
+int verificaString(char nome[21]);
+
+void formataString(char nome[21]);
+
+void LimpaBuffer(void);
