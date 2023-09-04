@@ -36,6 +36,7 @@ A cópia de strings usando strcpy é linear em relação ao tamanho da string, o
 A escrita no arquivo é O(1) para cada atributo do funcionário.
 A função chama LimpaBuffer(), que é linear em relação ao número de caracteres lidos até encontrar um caractere de nova linha '\n' ou EOF.
 Portanto, a complexidade total é O(1).
+
 Complexidade de espaço: A função aloca dinamicamente um espaço para um funcionário usando malloc, que é O(1) em relação ao número de funcionários.
 
 *quantificaFuncionarios(FILE arquivo)
