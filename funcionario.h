@@ -1,6 +1,3 @@
-//Implementação da interface das funções
-#include <stdio.h>
-
 typedef struct funcionario Funcionario;
 
 // Função para registrar um novo funcionário e armazenar suas informações em um arquivo

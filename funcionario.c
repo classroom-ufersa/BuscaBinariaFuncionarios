@@ -1,5 +1,3 @@
-//Implementação da TAD Funcionario e das funções que manipulam a TAD
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -25,7 +23,7 @@ int verificaString(char nome[21])
     int i;
     for(i = 0; i < strlen(nome); i++) {
         if (!isalnum(nome[i])) {
-            printf("Nome Inválido\n");
+            printf("Entrada Inválido\n");
             return 0;
         }
     }

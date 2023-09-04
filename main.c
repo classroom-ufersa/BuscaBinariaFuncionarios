@@ -7,12 +7,13 @@ int main(void)
 {
   int opcao1 = 0, opcao2 = 0, totalFuncionarios = 0, resultado = 0, resultadoString = 0;
   char nome[21], cargo[21], documento[21];
+  double tempo = 0;
   Funcionario *funcionario = NULL; 
   FILE *arquivo = NULL; 
 
   do
   {
-    printf("\nMENU\n");
+    printf("\n========== MENU ==========\n");
     printf("1 - Registrar Funcionário\n");
     printf("2 - Buscar Funcionário\n");
     printf("3 - Sair\n");
@@ -44,10 +45,11 @@ int main(void)
             formataString(nome);
             formataString(cargo);
             registraFuncionario(funcionario, arquivo, nome, cargo, documento);
+            printf("Funcionário Cadastrado Com Sucesso!\n");
             break;
         
       case 2:
-            printf("\nOpções de Busca\n");
+            printf("\n=== OPÇÕES DE BUSCA ===\n");
             printf("1 - Buscar Pelo Nome\n");
             printf("2 - Buscar Pelo Documento\n");
             scanf(" %d", &opcao2);
@@ -66,15 +68,16 @@ int main(void)
                     totalFuncionarios = quantificaFuncionarios(arquivo);
 
                     funcionario = carregaDados(funcionario, arquivo, totalFuncionarios);
-
+                    clock_t inicio = clock();
                     resultado = buscaBinariaNome(funcionario, totalFuncionarios, nome);
-
+                    tempo = (double)(clock() - inicio) / CLOCKS_PER_SEC;
+                    printf("RESULTADO:\n");
                     if(resultado == -1){
-                      printf("Funcionário Não Encontrado\n\n");
+                      printf("\nFuncionário Não Encontrado\n\n");
                     } else{
-                      printf("Funcionário Encontrado\n\n");
+                      printf("Funcionário Encontrado\n");
                     }
-
+                    printf("Tempo de execução: %f\n", tempo);
                     liberaFuncionarios(funcionario);
                     break;
 
@@ -91,15 +94,15 @@ int main(void)
                     totalFuncionarios = quantificaFuncionarios(arquivo);
 
                     funcionario = carregaDados(funcionario, arquivo, totalFuncionarios);
-
+                    tempo = (double)(clock() - inicio) / CLOCKS_PER_SEC;
                     resultado = buscaBinariaDocumento(funcionario, totalFuncionarios, documento);
-
+                    printf("RESULTADO:\n");
                     if(resultado == -1){
-                      printf("Funcionário Não Encontrado\n\n");
+                      printf("Funcionário Não Encontrado\n");
                     } else{
-                      printf("Funcionário Encontrado\n\n");
+                      printf("Funcionário Encontrado\n");
                     }
-
+                    printf("Tempo de execução: %f\n", tempo);
                     liberaFuncionarios(funcionario);
                     break;
 
