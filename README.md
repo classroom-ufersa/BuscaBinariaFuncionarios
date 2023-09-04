@@ -81,8 +81,8 @@ Busca binária é um algoritmo eficiente para encontrar um elemento específico 
 
 ![Funcionamento da Busca Binária](https://carlacastanho.github.io/Material-de-APC/assets/images/Busca/binaryVSlinear.gif)
 
-## Análise de Complexidade: BuscaBinariaNome
-
+## Análise de Complexidade: 
+- ##Busca Por Nome:
 ```
 int buscaBinariaNome(Funcionario *funcionarios, int nfuncionarios, char *nome)
 {
@@ -96,6 +96,34 @@ int buscaBinariaNome(Funcionario *funcionarios, int nfuncionarios, char *nome)
         meio = (inicio + fim) / 2;
         
         int comparacao = strcmp(funcionarios[meio].nome, nome);
+        
+        if (comparacao == 0) {
+            return meio;
+        } else if (comparacao < 0) {
+            inicio = meio + 1;
+        } else {
+            fim = meio - 1;
+        }
+    }
+    
+    return -1;
+}
+```
+
+-##Busca Por Documento:
+```
+int buscaBinariaDocumento(Funcionario *funcionarios, int nfuncionarios, char *documento)
+{
+    qsort(funcionarios, nfuncionarios, sizeof(Funcionario), compararDocumentos);
+
+    int inicio = 0;
+    int fim = nfuncionarios - 1;
+    int meio;
+    
+    while (inicio <= fim) {
+        meio = (inicio + fim) / 2;
+        
+        int comparacao = strcmp(funcionarios[meio].documento, documento);
         
         if (comparacao == 0) {
             return meio;
