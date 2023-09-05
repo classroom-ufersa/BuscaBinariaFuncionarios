@@ -30,7 +30,7 @@ Passo 7: Repita os passos 3 a 6 até encontrar o valor desejado ou até que inic
 
 Passo 8: Se o loop terminar e o valor não for encontrado, retorne -1 para indicar que o valor não está no vetor.
 
-- Exemplo Gráfico de Funcionamento da Busca Binária:
+- Exemplo Gráfico do Funcionamento da Busca Binária:
 ![Funcionamento da Busca Binária](https://carlacastanho.github.io/Material-de-APC/assets/images/Busca/binaryVSlinear.gif)
 
 ## Análise de Complexidade: 
