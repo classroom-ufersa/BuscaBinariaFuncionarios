@@ -13,6 +13,21 @@ Implemente um algoritmo que manipula um tipo estruturado Funcionários e possui 
 Busca binária é um algoritmo eficiente para encontrar um elemento específico em uma lista ordenada. Ele funciona dividindo repetidamente a lista pela metade e comparando o valor do elemento desejado com o valor do elemento no meio da lista. Se os valores forem iguais, o elemento foi encontrado. Se o valor do elemento desejado for menor, a busca é realizada na metade inferior da lista. Se o valor for maior, a busca é realizada na metade superior da lista. Esse processo é repetido até que o elemento seja encontrado ou até que a lista seja reduzida a zero. A busca binária tem uma complexidade de tempo de O(log n), o que a torna uma opção eficiente para pesquisar elementos em grandes listas ordenadas.
 
 - Funcionamento:
+Passo 1: Inicialize três variáveis, inicio e fim, representando os índices do início e do fim do vetor, respectivamente, e meio para armazenar o índice médio.
+
+Passo 2: Entre em um loop enquanto inicio for menor ou igual a fim. Isso garante que continuaremos a busca até que a área de pesquisa seja reduzida a um único elemento.
+
+Passo 3: Calcule o índice médio, meio, como a média de inicio e fim. Isso nos permite dividir o vetor em duas partes aproximadamente iguais.
+
+Passo 4: Verifique se o elemento no índice meio do vetor é igual ao valor que estamos procurando. Se for igual, encontramos o valor e retornamos meio, que é o índice do valor no vetor.
+
+Passo 5: Se o elemento no índice meio for menor que o valor que estamos procurando, atualizamos inicio para meio + 1. Isso significa que o valor que estamos procurando está à direita de meio, e a próxima iteração do loop considerará apenas a metade direita do vetor.
+
+Passo 6: Se o elemento no índice meio for maior que o valor que estamos procurando, atualizamos fim para meio - 1. Isso indica que o valor que estamos procurando está à esquerda de meio, e a próxima iteração do loop considerará apenas a metade esquerda do vetor.
+
+Passo 7: Repita os passos 3 a 6 até encontrar o valor desejado ou até que inicio seja maior que fim, indicando que o valor não está presente no vetor.
+
+Passo 8: Se o loop terminar e o valor não for encontrado, retorne -1 para indicar que o valor não está no vetor.
 
 ![Funcionamento da Busca Binária](https://carlacastanho.github.io/Material-de-APC/assets/images/Busca/binaryVSlinear.gif)
 
