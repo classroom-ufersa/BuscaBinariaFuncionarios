@@ -41,18 +41,18 @@ int buscaBinariaNome(Funcionario *funcionarios, int nfuncionarios, char *nome)
     int inicio = 0; //c2, 1 vez
     int fim = nfuncionarios - 1; //c3, 1 vez
     int meio; //c4, 1 vez
-    while (inicio <= fim) { //c5, log(nfuncionarios) vezes
-        meio = (inicio + fim) / 2; //c6, log(nfuncionarios) vezes
-        int comparacao = strcmp(funcionarios[meio].nome, nome); //c7, 
-        if (comparacao == 0) { //c8, 
-            return meio; //c9, 
-        } else if (comparacao < 0) { //c10, 
-            inicio = meio + 1; //c11,
+    while (inicio <= fim) { //c5, log₂(tamanho) vezes 
+        meio = (inicio + fim) / 2; //c6, log₂(tamanho) vezes 
+        int comparacao = strcmp(funcionarios[meio].nome, nome); //c7, log₂(tamanho) vezes 
+        if (comparacao == 0) { //c8, log₂(tamanho) vezes 
+            return meio; //c9, 1 vez
+        } else if (comparacao < 0) { //c10, log₂(tamanho) vezes 
+            inicio = meio + 1; //c11, log₂(tamanho) vezes 
         } else {
-            fim = meio - 1; //c12, 
+            fim = meio - 1; //c12, log₂(tamanho) vezes 
         }
     }
-    return -1; //c12, 
+    return -1; //c13, 1 vez
 }
 ```
 
@@ -64,17 +64,18 @@ int buscaBinariaDocumento(Funcionario *funcionarios, int nfuncionarios, char *do
     int inicio = 0; //c2, 1 vez
     int fim = nfuncionarios - 1; //c3, 1 vez
     int meio; //c4, 1 vez
-    while (inicio <= fim){ //c5, log(nfuncionarios) vezes
-        meio = (inicio + fim) / 2; //c6, log(nfuncionarios) vezes
-        int comparacao = strcmp(funcionarios[meio].documento, documento); //c7, 
-        if (comparacao == 0){ //c8, 
-        } else if (comparacao < 0){ //c10, 
-            inicio = meio + 1; //c11, 
+    while (inicio <= fim){ //c5, log₂(tamanho) vezes 
+        meio = (inicio + fim) / 2; //c6, log₂(tamanho) vezes 
+        int comparacao = strcmp(funcionarios[meio].documento, documento);
+        if (comparacao == 0){
+            return meio;
+        } else if (comparacao < 0){
+            inicio = meio + 1;
         } else {
-            fim = meio - 1; //c12, 
+            fim = meio - 1;
         }
     }
-    return -1; //c13, 
+    return -1;
 }
 ```
 
