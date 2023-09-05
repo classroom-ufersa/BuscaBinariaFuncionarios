@@ -41,15 +41,15 @@ int buscaBinariaNome(Funcionario *funcionarios, int nfuncionarios, char *nome)
     int inicio = 0; //c2, 1 vez
     int fim = nfuncionarios - 1; //c3, 1 vez
     int meio; //c4, 1 vez
-    while (inicio <= fim) { //c5, log₂(tamanho) vezes 
-        meio = (inicio + fim) / 2; //c6, log₂(tamanho) vezes 
-        int comparacao = strcmp(funcionarios[meio].nome, nome); //c7, log₂(tamanho) vezes 
-        if (comparacao == 0) { //c8, log₂(tamanho) vezes 
+    while (inicio <= fim) { //c5*log₂(nfuncionarios) vezes 
+        meio = (inicio + fim) / 2; //c6*log₂(nfuncionarios) vezes 
+        int comparacao = strcmp(funcionarios[meio].nome, nome); //c7*log₂(nfuncionarios) vezes 
+        if (comparacao == 0) { //c8*log₂(nfuncionarios) vezes 
             return meio; //c9, 1 vez
-        } else if (comparacao < 0) { //c10, log₂(tamanho) vezes 
-            inicio = meio + 1; //c11, log₂(tamanho) vezes 
+        } else if (comparacao < 0) { //c10*log₂(nfuncionarios) vezes 
+            inicio = meio + 1; //c11*log₂(nfuncionarios) vezes 
         } else {
-            fim = meio - 1; //c12, log₂(tamanho) vezes 
+            fim = meio - 1; //c12*log₂(nfuncionarios) vezes 
         }
     }
     return -1; //c13, 1 vez
@@ -64,18 +64,23 @@ int buscaBinariaDocumento(Funcionario *funcionarios, int nfuncionarios, char *do
     int inicio = 0; //c2, 1 vez
     int fim = nfuncionarios - 1; //c3, 1 vez
     int meio; //c4, 1 vez
-    while (inicio <= fim){ //c5, log₂(tamanho) vezes 
-        meio = (inicio + fim) / 2; //c6, log₂(tamanho) vezes 
-        int comparacao = strcmp(funcionarios[meio].documento, documento);
-        if (comparacao == 0){
-            return meio;
-        } else if (comparacao < 0){
-            inicio = meio + 1;
+    while (inicio <= fim){ //c5*log₂(tamanho) vezes 
+        meio = (inicio + fim) / 2; //c6*log₂(tamanho) vezes 
+        int comparacao = strcmp(funcionarios[meio].documento, documento); //c7*log₂(nfuncionarios) vezes 
+        if (comparacao == 0){ //c8*log₂(nfuncionarios) vezes 
+            return meio; //c9, 1 vez
+        } else if (comparacao < 0){ //c10*log₂(nfuncionarios) vezes 
+            inicio = meio + 1; //c11*log₂(nfuncionarios) vezes 
         } else {
-            fim = meio - 1;
+            fim = meio - 1; //c12*log₂(nfuncionarios) vezes 
         }
     }
-    return -1;
+    return -1; //c13, 1 vez
 }
 ```
-
+- A Complexidade em Ambas Funções é:
+T(n) = c1+c2+c3+c4+c5*log₂(n)+c6*log₂(n)+c7*log₂(n)+c8*log₂(n)+c9+c10*log₂(n)+c11*log₂(n)+c12*log₂(n)+c13
+T(n) = c1+c2+c3+c4+c9+c13+c5*log₂(n)+c6*log₂(n)+c7*log₂(n)+c8*log₂(n)+c10*log₂(n)+c11*log₂(n)+c12*log₂(n)
+T(n) = c1+c2+c3+c4+c9+c13+c5+log₂(n)*(c5+c6+c7+c8+c10+c11+c12)
+T(n) = A+log₂(n)*(B)
+O(n) = log₂(n) 
