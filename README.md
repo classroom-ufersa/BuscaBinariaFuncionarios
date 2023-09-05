@@ -30,6 +30,7 @@ Passo 7: Repita os passos 3 a 6 até encontrar o valor desejado ou até que inic
 
 Passo 8: Se o loop terminar e o valor não for encontrado, retorne -1 para indicar que o valor não está no vetor.
 
+- Exemplo Gráfico de Funcionamento da Busca Binária:
 ![Funcionamento da Busca Binária](https://carlacastanho.github.io/Material-de-APC/assets/images/Busca/binaryVSlinear.gif)
 
 ## Análise de Complexidade: 
@@ -78,8 +79,8 @@ int buscaBinariaDocumento(Funcionario *funcionarios, int nfuncionarios, char *do
     return -1; //c13, 1 vez
 }
 ```
-```
 - A Complexidade em Ambas Funções é:
+```
 
 T(n) = c1+c2+c3+c4+c5*log₂(n)+c6*log₂(n)+c7*log₂(n)+c8*log₂(n)+c9+c10*log₂(n)+c11*log₂(n)+c12*log₂(n)+c13
 
