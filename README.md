@@ -43,16 +43,16 @@ int buscaBinariaNome(Funcionario *funcionarios, int nfuncionarios, char *nome)
     int meio; //c4, 1 vez
     while (inicio <= fim) { //c5, log(nfuncionarios) vezes
         meio = (inicio + fim) / 2; //c6, log(nfuncionarios) vezes
-        int comparacao = strcmp(funcionarios[meio].nome, nome); //c7, 1 vez
-        if (comparacao == 0) { //c8, 1 vez
-            return meio; //c9, 1 vez
-        } else if (comparacao < 0) { //c10, 1 vez
-            inicio = meio + 1; //c11,1 vez
+        int comparacao = strcmp(funcionarios[meio].nome, nome); //c7, 
+        if (comparacao == 0) { //c8, 
+            return meio; //c9, 
+        } else if (comparacao < 0) { //c10, 
+            inicio = meio + 1; //c11,
         } else {
-            fim = meio - 1; //c12, 1 vez
+            fim = meio - 1; //c12, 
         }
     }
-    return -1; //c12, 1 vez
+    return -1; //c12, 
 }
 ```
 
@@ -66,20 +66,15 @@ int buscaBinariaDocumento(Funcionario *funcionarios, int nfuncionarios, char *do
     int meio; //c4, 1 vez
     while (inicio <= fim){ //c5, log(nfuncionarios) vezes
         meio = (inicio + fim) / 2; //c6, log(nfuncionarios) vezes
-        int comparacao = strcmp(funcionarios[meio].documento, documento); //c7, 1 vez
-        if (comparacao == 0){ //c8, 1 vez
-            return meio; //c9, 1 vez
-        } else if (comparacao < 0){ //c10, 1 vez
-            inicio = meio + 1; //c11, 1 vez
+        int comparacao = strcmp(funcionarios[meio].documento, documento); //c7, 
+        if (comparacao == 0){ //c8, 
+        } else if (comparacao < 0){ //c10, 
+            inicio = meio + 1; //c11, 
         } else {
-            fim = meio - 1; //c12, 1 vez
+            fim = meio - 1; //c12, 
         }
     }
-    return -1; //c13, 1 vez
+    return -1; //c13, 
 }
 ```
 
-- Em ambas funções a complexidade é:
-T(n) = c1+c2+c3+c4+c5log(n)+c6log(n)+c7+c8+c9+c10+c11+c12+c3
-T(n) = A+log(n)(c5+c6)+B
-T(n) = O(logn)
