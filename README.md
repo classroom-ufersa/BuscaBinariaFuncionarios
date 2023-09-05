@@ -78,6 +78,7 @@ int buscaBinariaDocumento(Funcionario *funcionarios, int nfuncionarios, char *do
     return -1; //c13, 1 vez
 }
 ```
+```
 - A Complexidade em Ambas Funções é:
 
 T(n) = c1+c2+c3+c4+c5*log₂(n)+c6*log₂(n)+c7*log₂(n)+c8*log₂(n)+c9+c10*log₂(n)+c11*log₂(n)+c12*log₂(n)+c13
@@ -89,3 +90,4 @@ T(n) = c1+c2+c3+c4+c9+c13+c5+log₂(n)*(c5+c6+c7+c8+c10+c11+c12)
 T(n) = A+log₂(n)*(B)
 
 O(n) = log₂(n) 
+```
