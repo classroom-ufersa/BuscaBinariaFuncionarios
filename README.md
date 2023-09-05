@@ -13,6 +13,7 @@ Implemente um algoritmo que manipula um tipo estruturado Funcionários e possui 
 Busca binária é um algoritmo eficiente para encontrar um elemento específico em uma lista ordenada. Ele funciona dividindo repetidamente a lista pela metade e comparando o valor do elemento desejado com o valor do elemento no meio da lista. Se os valores forem iguais, o elemento foi encontrado. Se o valor do elemento desejado for menor, a busca é realizada na metade inferior da lista. Se o valor for maior, a busca é realizada na metade superior da lista. Esse processo é repetido até que o elemento seja encontrado ou até que a lista seja reduzida a zero. A busca binária tem uma complexidade de tempo de O(log n), o que a torna uma opção eficiente para pesquisar elementos em grandes listas ordenadas.
 
 - Funcionamento:
+
 Passo 1: Inicialize três variáveis, inicio e fim, representando os índices do início e do fim do vetor, respectivamente, e meio para armazenar o índice médio.
 
 Passo 2: Entre em um loop enquanto inicio for menor ou igual a fim. Isso garante que continuaremos a busca até que a área de pesquisa seja reduzida a um único elemento.
@@ -42,15 +43,13 @@ int buscaBinariaNome(Funcionario *funcionarios, int nfuncionarios, char *nome)
     int meio; //c4, 1 vez
     while (inicio <= fim) { //c5, log2(nfuncionarios) vezes
         meio = (inicio + fim) / 2; //c6, log2(nfuncionarios) vezes
-        
-        int comparacao = strcmp(funcionarios[meio].nome, nome); //c7, log2(nfuncionarios) vezes
-        
-        if (comparacao == 0) { //c8, log2(nfuncionarios) vezes
-            return meio; //c9, log2(nfuncionarios) vezes
-        } else if (comparacao < 0) { //c10, log2(nfuncionarios) vezes
-            inicio = meio + 1; //c11, log2(nfuncionarios) vezes
+        int comparacao = strcmp(funcionarios[meio].nome, nome); //c7, 1 vez
+        if (comparacao == 0) { //c8, 1 vez
+            return meio; //c9, 1 vez
+        } else if (comparacao < 0) { //c10, 1 vez
+            inicio = meio + 1; //c11,1 vez
         } else {
-            fim = meio - 1; //c12, log2(nfuncionarios) vezes
+            fim = meio - 1; //c12, 1 vez
         }
     }
     return -1; //c12, 1 vez
@@ -67,15 +66,13 @@ int buscaBinariaDocumento(Funcionario *funcionarios, int nfuncionarios, char *do
     int meio; //c4, 1 vez
     while (inicio <= fim){ //c5, log2(nfuncionarios) vezes
         meio = (inicio + fim) / 2; //c6, log2(nfuncionarios) vezes
-        
-        int comparacao = strcmp(funcionarios[meio].documento, documento); //c7, log2(nfuncionarios) vezes
-        
-        if (comparacao == 0){ //c8, log2(nfuncionarios) vezes
-            return meio; //c9, log2(nfuncionarios) vezes
-        } else if (comparacao < 0){ //c10, log2(nfuncionarios) vezes
-            inicio = meio + 1; //c11, log2(nfuncionarios) vezes
+        int comparacao = strcmp(funcionarios[meio].documento, documento); //c7, 1 vez
+        if (comparacao == 0){ //c8, 1 vez
+            return meio; //c9, 1 vez
+        } else if (comparacao < 0){ //c10, 1 vez
+            inicio = meio + 1; //c11, 1 vez
         } else {
-            fim = meio - 1; //c12, log2(nfuncionarios) vezes
+            fim = meio - 1; //c12, 1 vezes
         }
     }
     return -1; //c13, 1 vez
