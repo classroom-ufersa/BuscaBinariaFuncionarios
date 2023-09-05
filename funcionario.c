@@ -122,25 +122,22 @@ void liberaFuncionarios(Funcionario *funcionarios)
 int buscaBinariaNome(Funcionario *funcionarios, int nfuncionarios, char *nome)
 {
     qsort(funcionarios, nfuncionarios, sizeof(Funcionario), compararNomes);
-
     int inicio = 0;
     int fim = nfuncionarios - 1;
     int meio;
-    
-    while (inicio <= fim) {
+    while (inicio <= fim){
         meio = (inicio + fim) / 2;
         
         int comparacao = strcmp(funcionarios[meio].nome, nome);
         
-        if (comparacao == 0) {
+        if (comparacao == 0){
             return meio;
-        } else if (comparacao < 0) {
+        } else if (comparacao < 0){
             inicio = meio + 1;
         } else {
             fim = meio - 1;
         }
     }
-    
     return -1;
 }
 
@@ -148,25 +145,22 @@ int buscaBinariaNome(Funcionario *funcionarios, int nfuncionarios, char *nome)
 int buscaBinariaDocumento(Funcionario *funcionarios, int nfuncionarios, char *documento)
 {
     qsort(funcionarios, nfuncionarios, sizeof(Funcionario), compararDocumentos);
-
     int inicio = 0;
     int fim = nfuncionarios - 1;
     int meio;
-    
-    while (inicio <= fim) {
+    while (inicio <= fim){
         meio = (inicio + fim) / 2;
         
         int comparacao = strcmp(funcionarios[meio].documento, documento);
         
-        if (comparacao == 0) {
+        if (comparacao == 0){
             return meio;
-        } else if (comparacao < 0) {
+        } else if (comparacao < 0){
             inicio = meio + 1;
         } else {
             fim = meio - 1;
         }
     }
-    
     return -1;
 }
 

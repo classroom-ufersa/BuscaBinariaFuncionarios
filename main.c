@@ -8,6 +8,7 @@ int main(void)
   int opcao1 = 0, opcao2 = 0, totalFuncionarios = 0, resultado = 0, resultadoString = 0;
   char nome[21], cargo[21], documento[21];
   double tempo = 0;
+  clock_t inicio = clock();
   Funcionario *funcionario = NULL; 
   FILE *arquivo = NULL; 
 
@@ -68,7 +69,6 @@ int main(void)
                     totalFuncionarios = quantificaFuncionarios(arquivo);
 
                     funcionario = carregaDados(funcionario, arquivo, totalFuncionarios);
-                    clock_t inicio = clock();
                     resultado = buscaBinariaNome(funcionario, totalFuncionarios, nome);
                     tempo = (double)(clock() - inicio) / CLOCKS_PER_SEC;
                     printf("RESULTADO:\n");
@@ -94,8 +94,8 @@ int main(void)
                     totalFuncionarios = quantificaFuncionarios(arquivo);
 
                     funcionario = carregaDados(funcionario, arquivo, totalFuncionarios);
-                    tempo = (double)(clock() - inicio) / CLOCKS_PER_SEC;
                     resultado = buscaBinariaDocumento(funcionario, totalFuncionarios, documento);
+                    tempo = (double)(clock() - inicio) / CLOCKS_PER_SEC;
                     printf("RESULTADO:\n");
                     if(resultado == -1){
                       printf("Funcionário Não Encontrado\n");
